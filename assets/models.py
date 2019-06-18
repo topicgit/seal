@@ -4,8 +4,8 @@ from django.db import models
 class Ecs(models.Model):
     TYPE_CHOICES = (
         ('阿里云', '阿里云'),
-        ('腾讯云', '腾讯云'),
-        ('华为云', '华为云'),
+        ('金山云', '金山云'),
+        ('ucloud', 'ucloud'),
         ('亚马逊', '亚马逊'),
         ('其他', '其他'),
         (None,None),
@@ -15,6 +15,7 @@ class Ecs(models.Model):
     instance_id = models.CharField(max_length=64, verbose_name='实例ID', unique=True)
     instance_name = models.CharField(max_length=96, verbose_name='标签', blank=True, null=True, )
     os_name = models.CharField(max_length=64, verbose_name='系统版本', blank=True, null=True, )
+    zone = models.CharField(max_length=64, verbose_name='区域', blank=True, null=True, )
     cpu = models.IntegerField(verbose_name='CPU', blank=True, null=True)
     memory = models.IntegerField(verbose_name='内存', blank=True, null=True)
     private_ip = models.GenericIPAddressField(verbose_name='内网IP', blank=True, null=True)
